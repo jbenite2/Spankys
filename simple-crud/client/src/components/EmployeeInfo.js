@@ -36,7 +36,7 @@ function EmployeeInfo() {
           <h3>Section: 4A</h3>
         </div>
         <div className="clm">
-          <img src={require('../assets/mino.jpg')} height="300"></img>
+          <img src={require('../assets/biggie.png')} height="300"></img>
           <h3> Colby "Biggie Cheese" Rossman </h3>
           <h3>Class: Junior</h3>
           <h3>Section: 1A</h3>
