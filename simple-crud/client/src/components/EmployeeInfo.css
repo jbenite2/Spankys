@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:ital,wght@1,100&family=Fjalla+One&family=Quicksand:wght@700&family=Raleway:ital,wght@0,400;1,100&display=swap');
+
+* {
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.clm {
+  margin-left: 50px;
+  float: left;
+  text-align: center;
+}
+
+.row {
+  margin-left: 300px;
+  margin-right: 300px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.header {
+  margin-top: 100px;
+  margin-bottom: 75px;
+  color: orange;
+  text-align: center;
+  font-family: 'Raleway';
+  font-size: 30px;
+}
