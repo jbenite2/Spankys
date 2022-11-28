@@ -63,7 +63,7 @@ function EmployeeInfo() {
         </div>
         <div className="clm">
           <img
-            src={require('../assets/hacker.jpg')}
+            src={require('../assets/nilla.png')}
             alt="Nilla"
             height="300"
           ></img>
