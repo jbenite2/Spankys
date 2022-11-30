@@ -12,6 +12,7 @@ function Order(){
 	 const [nickname, setNickname] = useState("");
 	 const [item, setItem] = useState("");
 	 const [qty, setQty] = useState(0);
+	 const [phone, setPhone] = useState("");
 
 	 const displayInfo = () => { console.log(nickname + item + qty); };
 
@@ -40,6 +41,8 @@ function Order(){
 			 nickname: nickname, 
 			 item: item, 
 			 qty: qty, 
+			 phone: phone,
+
 			 }).then(() => { 
 				  setOrderList([
 				  		...orderList, 
@@ -47,6 +50,7 @@ function Order(){
 							 nickname: nickname,
 							 item: item,
 							 qty: qty,
+							 phone: phone,
 						},
 					]);
 			 });
@@ -69,6 +73,7 @@ function Order(){
 						 nickname: val.nickname,
 						 item: val.item,
 						 qty: val.qty,
+						 phone: val.phone,
 						 completed: val.completed,
 					}
 
@@ -90,6 +95,7 @@ function Order(){
 							  nickname: val.nickname,
 							  item: val.item,
 							  qty: val.qty,
+							  phone: val.phone,
 							 }
 
 							: val;
@@ -111,6 +117,7 @@ function Order(){
 							  nickname: val.nickname,
 							  item: val.item,
 							  qty: val.qty,
+							  phone: val.phone
 						 }
 
 						 : val;

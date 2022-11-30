@@ -17,10 +17,11 @@ app.post('/create', (req, res) => {
   const item = req.body.item
   const qty = parseInt(req.body.qty)
   const date = req.body.date
+  const phone = req.body.phone
 
   db.query(
-    'INSERT INTO orders22 (nickname, item, qty, date, completed) VALUES(?,?,?, ?, ?)',
-    [nickname, item, qty, date, 0],
+    'INSERT INTO orders22 (nickname, item, qty, date, completed, phone) VALUES (?,?,?,?,?,?)',
+    [nickname, item, qty, date, 0, phone],
     (err, result) => {
       if (err) {
         console.log(err)
@@ -52,7 +53,8 @@ app.get('/inventory', (req, res) => {
 })
 
 app.get('/openorders', (req, res) => {
-  db.query('SELECT * FROM orders22 WHERE completed = 0', (err, result) => {
+  db.query('SELECT * FROM orders22 WHERE completed = 0', 
+  (err, result) => {
     if (err) {
       console.log(err)
     } else {
@@ -135,6 +137,6 @@ app.delete('/delete/:id', (req, res) => {
   })
 })
 
-app.listen(443, () => {
-  console.log('Yay, your server is running in port 443')
+app.listen(3001, () => {
+  console.log('Yay, your server is running in port 3001')
 })

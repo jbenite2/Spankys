@@ -9,6 +9,7 @@ function Customer(){
 	 const [nickname, setNickname] = useState("");
 	 const [item, setItem] = useState("");
 	 const [qty, setQty] = useState(0);
+	 const [phone, setPhone] = useState("");
 
 	 const displayInfo = () => { console.log(nickname + item + qty); };
 
@@ -30,6 +31,7 @@ function Customer(){
 			 nickname: nickname, 
 			 item: item, 
 			 qty: qty, 
+			 phone: phone,
 			 }).then(() => { 
 				  setOrderList([
 				  		...orderList, 
@@ -37,6 +39,7 @@ function Customer(){
 							 nickname: nickname,
 							 item: item,
 							 qty: qty,
+							 phone: phone,
 						},
 					]);
 			 });
@@ -61,6 +64,7 @@ function Customer(){
 							  nickname: val.nickname,
 							  item: val.item,
 							  qty: val.qty,
+							  phone: val.phone,
 							 }
 
 							: val;
@@ -82,6 +86,7 @@ function Customer(){
 							  nickname: val.nickname,
 							  item: val.item,
 							  qty: val.qty,
+							  phone: val.phone
 						 }
 
 						 : val;
@@ -90,10 +95,6 @@ function Customer(){
 			}
 		);
 	};
-
-
-
-
 
 
 
@@ -123,6 +124,9 @@ function Customer(){
 	 		<input type="text" onChange={(event) => { setItem(event.target.value); }} />
 	 		<label>Quantity:</label>
 	 		<input type="number" onChange={(event) => { setQty(event.target.value); }}/>
+			<label>Phone:</label>
+			<input type="number" onChange={(event) => { setPhone(event.target.value); }}/>
+
 			<Button onClick={addOrder} sx={{ color: 'black', backgroundColor: 'orange', borderColor: 'orange', minWidth: '30%', padding: '30px', margin: '20px'}}>Submit Order</Button>
 
 			  
@@ -137,53 +141,18 @@ function Customer(){
                 <h3>Item: {val.item}</h3>
                 <h3>Qty: {val.qty}</h3>
                 <h3>Order_Date: {val.date}</h3>
+				<h3>Phone: {val.phone}</h3>
              
               </div>
               <div>
-                <input
-                  type="text"
-                  placeholder="Update item here"
-                  onChange={(event) => {
-                    setNewItem(event.target.value);
-                  }}
-                />
-                <Button
-                  onClick={() => {
-                    updateOrderItem(val.id);
-                  }}
-				  sx={{ color: 'black', backgroundColor: 'orange', borderColor: 'orange', minWidth: '30%', padding: '30px', margin: '20px'}}
-                >
-                  {" "}
-                  Update item
-                </Button>
+               
 
 
-					 <input
-					  type="number"
-					  placeholder="Update quantity here"
-					  onChange={(event) => {
-							setNewQty(event.target.value);
-						}}
-						sx={{ color: 'black', backgroundColor: 'orange', borderColor: 'orange', minWidth: '30%', padding: '30px', margin: '20px'}}
-						/>
+					
 
-						<Button
-						 onClick={() => {
-							  updateOrderQty(val.id);
-							}}
-							sx={{ color: 'black', backgroundColor: 'orange', borderColor: 'orange', minWidth: '30%', padding: '30px', margin: '20px'}}
-						>
-						{" "}
-						Update quantity
-						</Button>
+					
 
-                <Button
-                  onClick={() => {
-                    deleteOrder(val.id);
-				  }}
-                >
-                  Delete
-                </Button>
+                
               </div>
             </div>
           );
