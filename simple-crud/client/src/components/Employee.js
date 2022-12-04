@@ -48,8 +48,6 @@ function Employee(){
   			sx={{ color: 'black', backgroundColor: 'orange', borderColor: 'orange' }}>Check inventory</Button>
 	 <Button onClick={navigateToEmployees} variant='outlined'
   			sx={{ color: 'black', backgroundColor: 'orange', borderColor: 'orange' }}>Employee information</Button>
-	 <Button onClick={navigateToShifts} variant='outlined'
-  			sx={{ color: 'black', backgroundColor: 'orange', borderColor: 'orange' }}>Log shifts</Button>
 	 </div>
 	 </div>
 

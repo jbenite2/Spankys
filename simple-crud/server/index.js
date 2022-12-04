@@ -9,6 +9,9 @@ require('dotenv').config() //.env file in this folder holds private information
 app.use(cors())
 app.use(express.json())
 
+const current = new Date();
+
+
 const db = mysql.createConnection(process.env.DATABASE_URL)
 console.log('Connected to PlanetScale!')
 
@@ -16,7 +19,7 @@ app.post('/create', (req, res) => {
   const nickname = req.body.nickname
   const item = req.body.item
   const qty = parseInt(req.body.qty)
-  const date = req.body.date
+  const date = req.body.date;
   const phone = req.body.phone
 
   db.query(

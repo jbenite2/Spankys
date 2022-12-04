@@ -5,6 +5,11 @@ import "./Order.css";
 import { useState } from 'react';
 import Axios from 'axios';
 import {Routes, Route, useNavigate} from 'react-router-dom';
+import { outlinedInputClasses } from '@mui/material';
+import {useEffect} from 'react';
+
+const current = new Date();
+const date = `${current.getMonth()+1}/${current.getDate()}/${current.getFullYear()}`
 
   
 function Order(){
@@ -41,6 +46,7 @@ function Order(){
 			 nickname: nickname, 
 			 item: item, 
 			 qty: qty, 
+			 date: date, 
 			 phone: phone,
 
 			 }).then(() => { 
@@ -50,6 +56,7 @@ function Order(){
 							 nickname: nickname,
 							 item: item,
 							 qty: qty,
+							 date: date,
 							 phone: phone,
 						},
 					]);
@@ -74,6 +81,7 @@ function Order(){
 						 item: val.item,
 						 qty: val.qty,
 						 phone: val.phone,
+						 date: val.date,
 						 completed: val.completed,
 					}
 
@@ -95,6 +103,7 @@ function Order(){
 							  nickname: val.nickname,
 							  item: val.item,
 							  qty: val.qty,
+							  date: val.date,
 							  phone: val.phone,
 							 }
 
@@ -117,6 +126,7 @@ function Order(){
 							  nickname: val.nickname,
 							  item: val.item,
 							  qty: val.qty,
+							  date: val.date,
 							  phone: val.phone
 						 }
 
@@ -142,29 +152,28 @@ function Order(){
 
 		}
 
+	useEffect(() => {
+		getOpenOrders();
+	}, []);
 
 	 return(
 	 <div> 
 	    <Button onClick={navigateEmployee} sx={{ color: 'black', backgroundColor: 'orange', borderColor: 'orange' }}>Back to employee menu</Button>
+		<Button onClick={navigateArchive} sx={{ color: 'black', backgroundColor: 'orange', borderColor: 'orange' }}>Show orders archive</Button>
 	  
 	  <div className="Title">
-	 	<h1 className="PageTitle">Manage orders:</h1>
+	 	<h1 className="PageTitle">Order queue:</h1>
 		</div>
-		<div className="order_page">
-		
-	<div className="choices">
-	 <Button onClick={getOpenOrders}  variant='outlined'
-  				sx={{ color: 'black', backgroundColor: 'orange', borderColor: 'orange', minWidth: '30%', padding: '30px', margin: '20px'}}>Show Active Orders</Button>
-			  
-			  <Button onClick={navigateArchive} sx={{ color: 'black', backgroundColor: 'gray', borderColor: 'orange' }}>Show orders archive</Button>
-		 
 
+		<div className="order_page">
+		<div className="choices">
+		
         {orderList.map((val, key) => {
           return (
             <div className="order"> 
               <div className="data">
 
-				  	<div className="col">
+				<div className="col">
                 <h3 className="field-name">Nickname:</h3>
 					 <h3 className="field"> {val.nickname}</h3>
 					</div>
@@ -193,13 +202,13 @@ function Order(){
                     setNewItem(event.target.value);
                   }}
 
- />
+ 				/>
                 <Button
                   onClick={() => {
                     updateOrderItem(val.id);
                   }}
-                  variant='outlined'
-  				sx={{ color: 'black', backgroundColor: 'orange', borderColor: 'orange', minWidth: '30%', padding: '10px', margin: '10px'}}>
+				  variant = 'outlined'
+                  >
                   {" "}
                   Update item
                 </Button>
@@ -216,8 +225,8 @@ function Order(){
 						<Button
 						 onClick={() => {
 							  updateOrderQty(val.id);
-							}}  variant='outlined'
-  				sx={{ color: 'black', backgroundColor: 'orange', borderColor: 'orange', minWidth: '30%', padding: '10px', margin: '10px'}}
+							}}  
+							variant = 'outlined'
 						>
 						{" "}
 						Update quantity
@@ -227,29 +236,27 @@ function Order(){
                   onClick={() => {
                     deleteOrder(val.id);
                   }}
-                 variant='outlined'
-  				sx={{ color: 'black', backgroundColor: 'red', borderColor: 'orange', minWidth: '30%', padding: '20px', margin: '10px'}}>
-                  Delete
+
+				  variant = 'outlined'
+                 >
+                  Cancel order
                 </Button>
 				<Button
                   onClick={ () => {
-                    markComplete(val.id); 
-                  }}
-                 variant='outlined'
-  				sx={{ color: 'white', backgroundColor: 'green', borderColor: 'green', minWidth: '30%', padding: '20px', margin: '10px'}}>
+                    markComplete(val.id); getOpenOrders()
+				   }}
+                 >
                   Mark Complete
                 </Button>
-				<Button onClick={getOpenOrders}>Refresh</Button>
+		
 
               </div>
             </div>
           );
         })}
       </div>
-
-		</div>
-
-	 </div>
+	  </div>
+		</div> 
 
 	 )
 
