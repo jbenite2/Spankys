@@ -24,6 +24,8 @@ function Customer(){
 		navigate ('/');
     }
 
+	const current = new Date();
+	const date = `${current.getMonth()+1}/${current.getDate()}/${current.getFullYear()}`;
 
 
 	 const addOrder = () => {
@@ -31,6 +33,7 @@ function Customer(){
 			 nickname: nickname, 
 			 item: item, 
 			 qty: qty, 
+			 date: date,
 			 phone: phone,
 			 }).then(() => { 
 				  setOrderList([
@@ -39,6 +42,7 @@ function Customer(){
 							 nickname: nickname,
 							 item: item,
 							 qty: qty,
+							 date: date,
 							 phone: phone,
 						},
 					]);
@@ -64,6 +68,7 @@ function Customer(){
 							  nickname: val.nickname,
 							  item: val.item,
 							  qty: val.qty,
+							  date: date,
 							  phone: val.phone,
 							 }
 
@@ -86,6 +91,7 @@ function Customer(){
 							  nickname: val.nickname,
 							  item: val.item,
 							  qty: val.qty,
+							  date: date,
 							  phone: val.phone
 						 }
 
