@@ -8,6 +8,9 @@ import {Routes, Route, useNavigate} from 'react-router-dom';
 import { outlinedInputClasses } from '@mui/material';
 import {useEffect} from 'react';
 
+
+
+
 const current = new Date();
 const date = `${current.getMonth()+1}/${current.getDate()}/${current.getFullYear()}`
 
@@ -26,6 +29,7 @@ function Order(){
 
 	 const [orderList, setOrderList] = useState([]);
 	 const [completed, setCompleted] = useState(0);
+
 
 	 const navigate = useNavigate();
 	 const navigateHome = () => {
@@ -137,6 +141,8 @@ function Order(){
 		);
 	};
 
+	
+
 
 		const deleteOrder = (id) => {
 			 Axios.delete(`http://localhost:3001/delete/${id}`).then((response) => {
@@ -148,9 +154,26 @@ function Order(){
 			});
 		};
 
+	
+
+
+
+		const sendEmail = (val) => {
+			Axios.post('http://localhost:3001/send', {
+				 nickname: val.nickname, 
+				 item: val.item, 
+				 qty: val.qty, 
+				 date: val.date, 
+				 phone: val.phone,	
+				 })
+			};
+
+
+
 		const handleClick = event => {
 
 		}
+
 
 	useEffect(() => {
 		getOpenOrders();
@@ -193,6 +216,11 @@ function Order(){
                 <h3 className="field-name">ID:</h3>
 					 <h3 className="field"> {val.id}</h3>
 					 </div>
+					 <div className="col">
+				<h3 className="field-name">Email:</h3>
+					<h3 className="field"> {val.phone}</h3>
+					</div>
+
               </div>
               <div className="choices">
                 <input
@@ -214,23 +242,23 @@ function Order(){
                 </Button>
 
 
-					 <input
-					  type="number"
-					  placeholder="Update quantity here"
-					  onChange={(event) => {
-							setNewQty(event.target.value);
-						}}
-						/>
+				<input
+				type="number"
+				placeholder="Update quantity here"
+				onChange={(event) => {
+				setNewQty(event.target.value);
+				}}
+				/>
 
-						<Button
-						 onClick={() => {
-							  updateOrderQty(val.id);
-							}}  
-							variant = 'outlined'
-						>
-						{" "}
-						Update quantity
-						</Button>
+				<Button
+					onClick={() => {
+					updateOrderQty(val.id);
+					}}  
+					variant = 'outlined'
+					>
+					{" "}
+					Update quantity
+					</Button>
 
                 <Button
                   onClick={() => {
@@ -243,11 +271,14 @@ function Order(){
                 </Button>
 				<Button
                   onClick={ () => {
-                    markComplete(val.id); getOpenOrders()
+                    sendEmail(val); markComplete(val.id); getOpenOrders()
 				   }}
                  >
                   Mark Complete
                 </Button>
+				<Button onClick={ 
+                    getOpenOrders
+				   }>Refresh</Button>
 		
 
               </div>

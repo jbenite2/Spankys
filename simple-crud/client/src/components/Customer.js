@@ -131,7 +131,7 @@ function Customer(){
 	 		<label>Quantity:</label>
 	 		<input type="number" onChange={(event) => { setQty(event.target.value); }}/>
 			<label>Phone:</label>
-			<input type="number" onChange={(event) => { setPhone(event.target.value); }}/>
+			<input type="text" onChange={(event) => { setPhone(event.target.value); }}/>
 
 			<Button onClick={addOrder} sx={{ color: 'black', backgroundColor: 'orange', borderColor: 'orange', minWidth: '30%', padding: '30px', margin: '20px'}}>Submit Order</Button>
 
