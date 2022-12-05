@@ -181,9 +181,10 @@ function Order(){
 
 	 return(
 	 <div> 
+		<div className="topButtons">
 	    <Button onClick={navigateEmployee} sx={{ color: 'black', backgroundColor: 'orange', borderColor: 'orange' }}>Back to employee menu</Button>
-		<Button onClick={navigateArchive} sx={{ color: 'black', backgroundColor: 'orange', borderColor: 'orange' }}>Show orders archive</Button>
-	  
+		<Button className="archive" onClick={navigateArchive} sx={{ color: 'black', backgroundColor: 'orange', borderColor: 'orange' }}>Show orders archive</Button>
+		</div>
 	  <div className="Title">
 	 	<h1 className="PageTitle">Order queue:</h1>
 		</div>
@@ -216,13 +217,11 @@ function Order(){
                 <h3 className="field-name">ID:</h3>
 					 <h3 className="field"> {val.id}</h3>
 					 </div>
-					 <div className="col">
-				<h3 className="field-name">Email:</h3>
-					<h3 className="field"> {val.phone}</h3>
-					</div>
+			
 
               </div>
-              <div className="choices">
+              <div className="data">
+				<div className="col">
                 <input
                   type="text"
                   placeholder="Update item here"
@@ -231,17 +230,18 @@ function Order(){
                   }}
 
  				/>
-                <Button
+                <Button className="updateButtons"
                   onClick={() => {
                     updateOrderItem(val.id);
                   }}
-				  variant = 'outlined'
+				
                   >
                   {" "}
-                  Update item
+                  Submit
                 </Button>
+				  </div>
 
-
+				<div className="col">
 				<input
 				type="number"
 				placeholder="Update quantity here"
@@ -254,21 +254,24 @@ function Order(){
 					onClick={() => {
 					updateOrderQty(val.id);
 					}}  
-					variant = 'outlined'
+					
 					>
 					{" "}
-					Update quantity
+					Submit
 					</Button>
-
+				</div>	
+				<div className="col">	
                 <Button
                   onClick={() => {
                     deleteOrder(val.id);
                   }}
 
-				  variant = 'outlined'
+				 
                  >
                   Cancel order
                 </Button>
+				</div>
+				<div className="col">
 				<Button
                   onClick={ () => {
                     sendEmail(val); markComplete(val.id); getOpenOrders()
@@ -276,11 +279,7 @@ function Order(){
                  >
                   Mark Complete
                 </Button>
-				<Button onClick={ 
-                    getOpenOrders
-				   }>Refresh</Button>
-		
-
+				</div>
               </div>
             </div>
           );

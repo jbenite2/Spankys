@@ -54,9 +54,22 @@
 
 .field-name{
 	 color: orange;
-	
+	 padding: 0px;
 
 
 }
 
+.updateButtons{
 
+	margin: 3px;
+}
+
+
+
+.topButtons{
+	width: 100%;
+}
+
+.archive{
+	float: right;
+}

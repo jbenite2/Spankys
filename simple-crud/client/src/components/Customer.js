@@ -130,7 +130,7 @@ function Customer(){
 	 		<input type="text" onChange={(event) => { setItem(event.target.value); }} />
 	 		<label>Quantity:</label>
 	 		<input type="number" onChange={(event) => { setQty(event.target.value); }}/>
-			<label>Phone:</label>
+			<label>Email:</label>
 			<input type="text" onChange={(event) => { setPhone(event.target.value); }}/>
 
 			<Button onClick={addOrder} sx={{ color: 'black', backgroundColor: 'orange', borderColor: 'orange', minWidth: '30%', padding: '30px', margin: '20px'}}>Submit Order</Button>
@@ -147,7 +147,7 @@ function Customer(){
                 <h3>Item: {val.item}</h3>
                 <h3>Qty: {val.qty}</h3>
                 <h3>Order_Date: {val.date}</h3>
-				<h3>Phone: {val.phone}</h3>
+				<h3>Email: {val.phone}</h3>
              
               </div>
               <div>
