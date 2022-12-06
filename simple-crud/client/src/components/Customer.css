@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:ital,wght@1,100&family=Fjalla+One&family=Quicksand:wght@700&family=Raleway:ital,wght@0,400;1,100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@900&display=swap');
 
-
-.PageTitle {
-	 font-family: 'Raleway';
+.page-title {
+	font-family: 'Rubik', sans-serif;
 	 font-size: 60px;
-	 color:orange;
+	 color:white;
 	 width: 100%;
 	 text-align:center;
 
@@ -21,6 +21,7 @@
 	flex: 50%;
 	justify-content: center;
 	text-align: center;
+	background-color:orange;
 }	 
 
 .order_col input {
@@ -34,9 +35,7 @@
 
 }
 
-.order_col label {
-	 font-family: 'Raleway';
-}
+
 
 .order_col button {
 
@@ -58,7 +57,7 @@
 h2 {
 
 	 font-family: 'Raleway';
-	 color: orange;
+	 color: white;
 }
 
 .pageText{
@@ -66,15 +65,15 @@ h2 {
 }
 
 
-.order{
+.order-confirm{
 	 width: 90%;
 	 height: auto;
-  	 border: 1px solid black;
-    margin: 10px;
+  	 border: 1px solid white;
     display: flex;
-    padding: 20px;
+	margin-left: 35px;
+	margin-top: 20px;
 	 
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Raleway';
 	 justify-content: center;
 }
 
@@ -92,5 +91,27 @@ h2 {
     flex-direction: column;
     width: 100%;
     text-align: center;
-    padding: 70px 0;
+    padding: 50px 0;
+	background-color: orange;
+	margin: 0;
+}
+
+.button-top{
+	background-color: orange;
+	height: 100vh;
+}
+
+.label{
+	color: white;
+	font-family: 'Rubik', sans-serif;
+}
+
+
+.label2{
+	color: black;
+	font-family: 'Rubik', sans-serif;
+}
+
+h3 {
+	color:white;
 }

@@ -1,6 +1,8 @@
 
 
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:ital,wght@1,100&family=Fjalla+One&family=Quicksand:wght@700&family=Raleway:ital,wght@0,400;1,100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@900&display=swap');
+
 
 .buttons {
 	 width: 80%;
@@ -11,28 +13,33 @@
 
 
 
-.header {
-	 color: orange;
+.header-final {
+	 color: orange !important;
 	 text-align: center;
 	 font-family: 'Raleway';
 }
 
-.choices{
+.choices-final{
 
 	 display: flex;
 	 flex-direction: column;
 	 justify-content: center;
-	 width: 100%;
+	 width: 80%;
 	 margin: auto;
+	 padding: 10px;
 
 }
 
-.order {
+.order-final {
 	 display: flex;
 	 flex-direction: column;
+	 background-color: orange;
+	 border: 1px solid white;
+	 outline: true;
+	 padding: 20px;
 }
 
-.data {
+.data-final {
 	 display: flex;
 	 flex-direction: row;
 	 padding: 5px;
@@ -41,20 +48,23 @@
 	}
 
 
-.field {
+.field-final {
 	 padding: 5px;
+	 color: black;
+	 font-family: 'Raleway';
 }
 
-.col {
+.col-final {
 	 display: flex;
 	 flex-direction: column;
 	 justify-content: center;
 	 width: 100%;
 }
 
-.field-name{
-	 color: orange;
+.field-name-final{
+	 color: white;
 	 padding: 0px;
+	 font-family: 'Raleway';
 
 
 }
@@ -72,4 +82,16 @@
 
 .archive{
 	float: right;
+}
+
+.PageTitle-final {
+color: orange;
+font-family: 'Rubik', sans-serif;
+margin: 20px;
+padding: 20px;
+
+}
+
+.order_page_final{
+	background-color: white !important;
 }

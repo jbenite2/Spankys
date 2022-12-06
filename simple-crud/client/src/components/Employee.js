@@ -7,6 +7,7 @@ import Login from './Login.js';
 import {BrowswerRouter, Switch, Routes, Route, useNavigate} from 'react-router-dom';
 import Axios from 'axios';
 import ReactDOM from "react-dom";
+import graphic from '../assets/graphic.png';
 
 
 
@@ -51,18 +52,21 @@ function Employee(){
 
 
 	<div className="page">
-		<Button onClick={navigateBack} sx={{ color: 'black', backgroundColor: 'orange', borderColor: 'orange' }}>Back</Button>
+		<Button onClick={navigateBack} sx={{ color: 'white', backgroundColor: 'orange', borderColor: 'orange' }}>Back</Button>
 	 <div className="header">
-	<h1 className="header">Employee dashboard</h1>
+	<h1 className="header-employee">Employee dashboard</h1>
 	 </div>
 	 
 	 <div className="buttons">
 		 <Button onClick={navigateToOrders} variant='outlined'
-  			sx={{ color: 'black', backgroundColor: 'orange', borderColor: 'orange' }}>Manage orders</Button>
+  			sx={{ color: 'white', backgroundColor: 'orange', borderColor: 'orange' }}>Manage orders</Button>
 	 <Button onClick={navigateToInventory} variant='outlined'
-  			sx={{ color: 'black', backgroundColor: 'orange', borderColor: 'orange' }}>Check inventory</Button>
+  			sx={{ color: 'white', backgroundColor: 'orange', borderColor: 'orange' }}>Check inventory</Button>
 	 <Button onClick={navigateToEmployees} variant='outlined'
-  			sx={{ color: 'black', backgroundColor: 'orange', borderColor: 'orange' }}>Employee information</Button>
+  			sx={{ color: 'white', backgroundColor: 'orange', borderColor: 'orange' }}>Employee information</Button>
+	 </div>
+	 <div className="image-employee">
+	 <img src={graphic} alt="food graphic" className="logo-employee"/>
 	 </div>
 	 </div>
 

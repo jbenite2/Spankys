@@ -1,5 +1,8 @@
-.header {
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@900&display=swap');
+
+.header-inventory {
     color: orange;
     text-align: center;
-    font-family: 'Raleway';
+    font-family: 'Rubik', sans-serif;
+    font-size: 40pt;
 } 

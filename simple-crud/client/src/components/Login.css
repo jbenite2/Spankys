@@ -5,15 +5,30 @@
     height: 100vh;
     text-align: center;
     padding: 70px 0;
+    background-color: orange;
 }
 
 .title {
-    color: orange; 
+    color: white; 
     font-family: 'Raleway';
     align-items: center;
 }
 
 .labels {
+    color: white; 
+    font-family: 'Raleway'; 
+    background-color: orange;
+    margin: 10px;
+}
+
+.labelsb {
     color: orange; 
     font-family: 'Raleway'; 
+    background-color: white;
+    margin: 10px;
+}
+
+.whole-page{
+
+    background-color: orange;
 }

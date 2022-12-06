@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import './Login.css';
 import PropTypes from 'prop-types';
+import {Routes, Route, useNavigate} from 'react-router-dom';
+import Button from '@mui/material/Button' 
 
 async function loginUser(credentials) {
     return fetch('http://localhost:3001/login', {
@@ -29,8 +31,17 @@ export default function Login({ setToken }) {
     setToken(token);
   }
 
+  const navigate = useNavigate();
+	 const navigateHome = () => {
+		navigate ('/');
+    }
+
   return(
+
+    <div className="whole-page">
+        <Button onClick={navigateHome} sx={{ color: 'white', backgroundColor: 'orange', borderColor: 'white' }} variant="outlined">Home</Button>
 <div className="login-wrapper">
+
     <h1 className="title">Please Log In</h1>
     <form onSubmit={handleSubmit}>
       <label>
@@ -42,9 +53,10 @@ export default function Login({ setToken }) {
         <input type="password" onChange={e => setPassword(e.target.value)}/>
       </label>
       <div>
-        <button type="submit" className ="labels">Submit</button>
+        <button type="submit" className ="labelsb">Submit</button>
       </div>
     </form>
+    </div>
     </div>
   )
 }

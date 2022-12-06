@@ -5,6 +5,8 @@ import EditIcon from '@mui/icons-material/Edit';
 import CheckIcon from '@mui/icons-material/Check';
 import {Routes, Route, useNavigate} from 'react-router-dom';
 import Button from '@mui/material/Button' 
+import './Inventory.css';
+
 
 function Inventory(){
 	const [inventoryList, setInventorylist] = useState([])
@@ -26,6 +28,11 @@ function Inventory(){
 			console.log(inventoryList)
 		})
 	}
+
+	useEffect(() => {
+		getInventory();
+		console.log("inventory in");
+	  }, []);
 
 	const startEditing = (i) => {
 		setCurrentlyEditing(i)
@@ -51,9 +58,9 @@ function Inventory(){
 
 	return(
 		<div>
-			<Button onClick={navigateBack} sx={{ color: 'black', backgroundColor: 'orange', borderColor: 'orange' }}>Back</Button>
-			<h1 className="header">Inventory page</h1>
-			<button onClick={getInventory}>Load Inventory</button>
+			<Button onClick={navigateBack} sx={{ color: 'white', backgroundColor: 'orange', borderColor: 'orange' }}>Back</Button>
+			<h1 className="header-inventory">Inventory log</h1>
+			
 			<div className="table">
 				<TableContainer sx={{width:'80%',margin:'auto',border:'3px solid lightgray'}}component={Paper}>
 					<Table>

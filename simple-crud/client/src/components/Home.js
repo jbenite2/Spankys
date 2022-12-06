@@ -20,15 +20,22 @@ function Home(){
 
 
     return (
+        <div className="page">
         <div className="home">
-            <img src={logo} alt="spanky's logo" className="logo"></img>
-            <h4 className="text">I am a ...</h4>
+            
+        
             <div className="choices">
-                <Button onClick={navigateToCustomer} variant='outlined'
-  				sx={{ color: 'black', backgroundColor: 'orange', borderColor: 'orange', minWidth: '30%', padding: '30px', margin: '20px' }}>Customer</Button>
-                <Button onClick={navigateEmployee} variant='outlined' 
-					 sx={{ color: 'black', backgroundColor: 'orange', borderColor: 'orange', minWidth: '30%', padding: '30px', margin: '20px' }}>Employee</Button>
+            <h1 className="title">Welcome to Spanky's!</h1>
+            <h4 className="text">I am a ...</h4>
+                <Button className="button" onClick={navigateToCustomer} variant='outlined'
+  				sx={{ color: 'white', backgroundColor: 'orange', borderColor: 'white', minWidth: '30%', padding: '10px', margin: '20px' }}>Customer</Button>
+                <Button className="button" onClick={navigateEmployee} variant='outlined' 
+					 sx={{ color: 'white', backgroundColor: 'orange', borderColor: 'white', minWidth: '30%', padding: '10px', margin: '20px' }}>Employee</Button>
             </div>
+            <div className="choices2">
+            <img src={logo} alt="spanky's logo" className="logo"></img>
+            </div>
+        </div>
         </div>
     );
 }

@@ -1,14 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:ital,wght@1,100&family=Fjalla+One&family=Quicksand:wght@700&family=Raleway:ital,wght@0,400;1,100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@900&display=swap');
 
 .buttons {
   width: 80%;
   margin: auto;
   display: flex;
   justify-content: center;
+  color: white;
 }
 
-.header {
+.header-employee {
   color: orange;
   text-align: center;
-  font-family: 'Raleway';
+  font-family: 'Rubik', sans-serif;
+}
+
+.image-employee{
+  width: 100%;
+
+}
+
+.logo-employee{
+  display: block;
+    margin-left: auto;
+    margin-right: auto;
+
 }

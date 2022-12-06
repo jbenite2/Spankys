@@ -117,34 +117,35 @@ function Customer(){
 
 
 	 return(
-	 <div> 
-	  <Button onClick={navigateHome} sx={{ color: 'black', backgroundColor: 'orange', borderColor: 'orange' }}>Home</Button>
+	 <div className="button-top"> 
+	  <Button onClick={navigateHome} sx={{ color: 'white', backgroundColor: 'orange', borderColor: 'white' }} variant='outlined' >Home</Button>
 	  <div className="total">
 	  <div className="Title">
-	 	<h1 className="PageTitle">Place an order:</h1>
+	 	<h1 className="page-title">Place an order:</h1>
 		</div>
 		<div className="order_page">
 		 <div className="order_col">
 		 	<h2 className="pageText">Enter your order info here:</h2>
-	 		<label>Name:</label>
-	 		<input type ="text" onChange={(event) => { setNickname(event.target.value); }} />
-	 		<label>Item:</label>
-	 		<input type="text" onChange={(event) => { setItem(event.target.value); }} />
-	 		<label>Quantity:</label>
-	 		<input type="number" onChange={(event) => { setQty(event.target.value); }}/>
-			<label>Email:</label>
-			<input type="text" onChange={(event) => { setPhone(event.target.value); }}/>
+	 		<label className="label">Name:</label>
+	 		<input className="label2" type ="text" onChange={(event) => { setNickname(event.target.value); }} />
+	 		<label className="label">Item:</label>
+	 		<input className="label2" type="text" onChange={(event) => { setItem(event.target.value); }} />
+	 		<label className="label">Quantity:</label>
+	 		<input  className="label2" type="number" onChange={(event) => { setQty(event.target.value); }}/>
+			<label className="label">Email:</label>
+			<input className="label2" type="text" onChange={(event) => { setPhone(event.target.value); }}/>
 
-			<Button onClick={addOrder} sx={{ color: 'black', backgroundColor: 'orange', borderColor: 'orange', minWidth: '30%', padding: '30px', margin: '20px'}}>Submit Order</Button>
+			<Button onClick={addOrder} sx={{ color: 'white', backgroundColor: 'orange', borderColor: 'white', minWidth: '30%', padding: '20px', margin: '20px'}} variant='outlined' >Submit Order</Button>
 		
 		
 		 
 		
         {orderList.map((val, key) => {
           return (
-            <div className="order"> 
-			  <h2>Order confirmation</h2>
+            <div className="order-confirm"> 
+			  
               <div>
+			  <h3>Order confirmation</h3>
                 <h3>Nickname: {val.nickname}</h3>
                 <h3>Item: {val.item}</h3>
                 <h3>Qty: {val.qty}</h3>

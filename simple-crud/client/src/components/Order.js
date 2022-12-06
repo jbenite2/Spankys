@@ -182,46 +182,46 @@ function Order(){
 	 return(
 	 <div> 
 		<div className="topButtons">
-	    <Button onClick={navigateEmployee} sx={{ color: 'black', backgroundColor: 'orange', borderColor: 'orange' }}>Back to employee menu</Button>
-		<Button className="archive" onClick={navigateArchive} sx={{ color: 'black', backgroundColor: 'orange', borderColor: 'orange' }}>Show orders archive</Button>
+	    <Button onClick={navigateEmployee} sx={{ color: 'white', backgroundColor: 'orange', borderColor: 'orange' }}>Back to employee menu</Button>
+
 		</div>
-	  <div className="Title">
-	 	<h1 className="PageTitle">Order queue:</h1>
+	  <div className="header-final">
+	 	<h1 className="PageTitle-final">Order queue:</h1>
 		</div>
 
-		<div className="order_page">
-		<div className="choices">
+		<div className="order_page_final">
+		<div className="choices-final">
 		
         {orderList.map((val, key) => {
           return (
-            <div className="order"> 
-              <div className="data">
+            <div className="order-final"> 
+              <div className="data-final">
 
-				<div className="col">
-                <h3 className="field-name">Nickname:</h3>
-					 <h3 className="field"> {val.nickname}</h3>
+				<div className="col-final">
+                <h3 className="field-name-final">Nickname:</h3>
+					 <h3 className="field-final"> {val.nickname}</h3>
 					</div>
-					<div className="col">
-                <h3 className="field-name">Item:</h3>
-					 <h3 className="field"> {val.item}</h3>
+					<div className="col-final">
+                <h3 className="field-name-final">Item:</h3>
+					 <h3 className="field-final"> {val.item}</h3>
 					 </div>
-					 <div className="col">
-                <h3 className="field-name">Qty:</h3>
-					 <h3 className="field"> {val.qty}</h3>
+					 <div className="col-final">
+                <h3 className="field-name-final">Qty:</h3>
+					 <h3 className="field-final"> {val.qty}</h3>
 					 </div>
-					 <div className="col">
-                <h3 className="field-name">Order_Date:</h3>
-					 <h3 className="field"> {val.date}</h3>
+					 <div className="col-final">
+                <h3 className="field-name-final">Order_Date:</h3>
+					 <h3 className="field-final"> {val.date}</h3>
 					 </div>
-					 <div className="col">
-                <h3 className="field-name">ID:</h3>
-					 <h3 className="field"> {val.id}</h3>
+					 <div className="col-final">
+                <h3 className="field-name-final">ID:</h3>
+					 <h3 className="field-final"> {val.id}</h3>
 					 </div>
 			
 
               </div>
-              <div className="data">
-				<div className="col">
+              <div className="data-final">
+				<div className="col-final">
                 <input
                   type="text"
                   placeholder="Update item here"
@@ -234,13 +234,14 @@ function Order(){
                   onClick={() => {
                     updateOrderItem(val.id);
                   }}
+				  sx={{ color: 'white', backgroundColor: 'orange', borderColor: 'orange' }}
                   >
                   {" "}
                   Submit
                 </Button>
 				  </div>
 
-				<div className="col">
+				<div className="col-final">
 				<input
 				type="number"
 				placeholder="Update quantity here"
@@ -252,28 +253,31 @@ function Order(){
 				<Button
 					onClick={() => {
 					updateOrderQty(val.id);
-					}}  			
+					}}  
+					sx={{ color: 'white', backgroundColor: 'orange', borderColor: 'orange' }}			
 					>
 					{" "}
 					Submit
 					</Button>
 				</div>	
 
-				<div className="col">	
+				<div className="col-final">	
                 <Button
                   onClick={() => {
                     deleteOrder(val.id);
                   }} 
+				  sx={{ color: 'white', backgroundColor: 'orange', borderColor: 'white' }} 
                  >
                   Cancel order
                 </Button>
 				</div>
 
-				<div className="col">
+				<div className="col-final">
 				<Button
                   onClick={ () => {
                     sendEmail(val); markComplete(val.id); getOpenOrders()
 				   }}
+				   sx={{ color: 'white', backgroundColor: 'orange', borderColor: 'white' }} 
                  >
                   Mark Complete
                 </Button>

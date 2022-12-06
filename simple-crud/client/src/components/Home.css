@@ -1,14 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:ital,wght@1,100&family=Fjalla+One&family=Quicksand:wght@700&family=Raleway:ital,wght@0,400;1,100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@900&display=swap');
 
-
+.page {
+    background-color: white;
+    height: 100vh;
+}
 
 .home {
     display: flex; 
-    flex-direction: column;
     justify-content: space-between;
     /* flex: 2 1 auto; */
     align-items: center;    
-    height: 100%
+    height: 100%;
 }
 
 
@@ -17,13 +20,39 @@
 	 padding: 30px;
 	 width: 80%;
 	 display: flex;
+     flex-direction: column;
 	 justify-content: center;
+     align-items: center;
+     text-align: center;
+     background-color: orange;
+     height: 100vh;
 
 }
 
 .text {
 	 font-family: 'Raleway';
 	 font-size: 20pt;
+     color: white;
 }
 
+.button {
+    width: 50%;
+    flex-direction: row;
 
+}
+
+.choices2 {
+    padding: 30px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+
+}
+
+.title{
+    font-family: 'Rubik', sans-serif;
+    font-size: 50pt;
+    color: white;
+}
