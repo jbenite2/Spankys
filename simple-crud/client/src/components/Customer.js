@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Axios from 'axios';
 import Button from '@mui/material/Button' 
 import {Routes, Route, useNavigate} from 'react-router-dom';
+import menu from '../assets/menu.png';
   
 function Customer(){
 
@@ -135,9 +136,8 @@ function Customer(){
 			<input type="text" onChange={(event) => { setPhone(event.target.value); }}/>
 
 			<Button onClick={addOrder} sx={{ color: 'black', backgroundColor: 'orange', borderColor: 'orange', minWidth: '30%', padding: '30px', margin: '20px'}}>Submit Order</Button>
-
-			  
-
+		
+		
 		 
 		
         {orderList.map((val, key) => {
@@ -161,10 +161,16 @@ function Customer(){
         })}
       
 	  </div>
+	  <div className="order_col">
+			<img src={menu} alt="spanky's menu" />
+		</div>
+	  </div>
+
+
 
 		</div>
 	</div>
-	 </div>
+	
 
 	 )
 
