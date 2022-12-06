@@ -4,7 +4,7 @@
 .PageTitle {
 	 font-family: 'Raleway';
 	 font-size: 60px;
-	 color: #ed822b;
+	 color:orange;
 	 width: 100%;
 	 text-align:center;
 
@@ -45,7 +45,7 @@
 	 height: 50px;	
 	 padding: 10px;
 	 margin: 5px;
-	 background-color: #ed822b;
+	 background-color: orange;
 	 
 	 
 
@@ -58,7 +58,7 @@
 h2 {
 
 	 font-family: 'Raleway';
-	 color: #ed822b;
+	 color: orange;
 }
 
 .pageText{
@@ -86,3 +86,11 @@ h2 {
   width: 100%;
  }
 
+.total {
+	display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    padding: 70px 0;
+}

@@ -118,6 +118,7 @@ function Customer(){
 	 return(
 	 <div> 
 	  <Button onClick={navigateHome} sx={{ color: 'black', backgroundColor: 'orange', borderColor: 'orange' }}>Home</Button>
+	  <div className="total">
 	  <div className="Title">
 	 	<h1 className="PageTitle">Place an order:</h1>
 		</div>
@@ -138,10 +139,11 @@ function Customer(){
 			  
 
 		 
-
+		
         {orderList.map((val, key) => {
           return (
             <div className="order"> 
+			  <h2>Order confirmation</h2>
               <div>
                 <h3>Nickname: {val.nickname}</h3>
                 <h3>Item: {val.item}</h3>
@@ -151,22 +153,17 @@ function Customer(){
              
               </div>
               <div>
-               
-
-
-					
-
-					
-
-                
+                          
               </div>
             </div>
           );
+		
         })}
-      </div>
+      
+	  </div>
 
 		</div>
-
+	</div>
 	 </div>
 
 	 )

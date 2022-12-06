@@ -1,17 +1,29 @@
 import './Employee.css'
 
-import React from 'react';
+import React, {useState} from 'react';
 import logo from '../assets/Spankys.png'
 import Button from '@mui/material/Button';
+import Login from './Login.js';
+import {BrowswerRouter, Switch, Routes, Route, useNavigate} from 'react-router-dom';
+import Axios from 'axios';
+import ReactDOM from "react-dom";
 
 
-import {Routes, Route, useNavigate} from 'react-router-dom';
 
+  
 
 
 function Employee(){
 
 	const navigate = useNavigate();
+	const [token, setToken] = useState();
+	if(!token) {
+		return <Login setToken={setToken} />
+	}
+
+
+	
+
 	const navigateToOrders = () => {
 		 navigate('/Order');
 	}
@@ -32,13 +44,16 @@ function Employee(){
 		navigate('/');
 	}
 
+
+
+
     return (
 
 
 	<div className="page">
 		<Button onClick={navigateBack} sx={{ color: 'black', backgroundColor: 'orange', borderColor: 'orange' }}>Back</Button>
 	 <div className="header">
-	<h1 className="header">Employee page</h1>
+	<h1 className="header">Employee dashboard</h1>
 	 </div>
 	 
 	 <div className="buttons">

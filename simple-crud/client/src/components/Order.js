@@ -234,7 +234,6 @@ function Order(){
                   onClick={() => {
                     updateOrderItem(val.id);
                   }}
-				
                   >
                   {" "}
                   Submit
@@ -253,24 +252,23 @@ function Order(){
 				<Button
 					onClick={() => {
 					updateOrderQty(val.id);
-					}}  
-					
+					}}  			
 					>
 					{" "}
 					Submit
 					</Button>
 				</div>	
+
 				<div className="col">	
                 <Button
                   onClick={() => {
                     deleteOrder(val.id);
-                  }}
-
-				 
+                  }} 
                  >
                   Cancel order
                 </Button>
 				</div>
+
 				<div className="col">
 				<Button
                   onClick={ () => {
@@ -280,6 +278,7 @@ function Order(){
                   Mark Complete
                 </Button>
 				</div>
+
               </div>
             </div>
           );

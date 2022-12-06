@@ -5,12 +5,19 @@ const mysql = require('mysql2') //Setting up MySQL. Note that we need mysql2
 const cors = require('cors') //Cross-origin resource sharing
 const { stepperClasses } = require('@mui/material')
 require('dotenv').config() //.env file in this folder holds private information
+const basicAuth = require('express-basic-auth');
+const cookieParser = require('cookie-parser');
 
+app.use(cookieParser('82e4e438a0705fabf61f9854e3b575af'));
 
 app.use(cors())
 app.use(express.json())
 
-
+app.use('/login', (req, res) => {
+  res.send({
+    token: 'spankys'
+  });
+});
 
 
 const current = new Date();
@@ -26,8 +33,6 @@ let transporter = nodemailer.createTransport({
     refreshToken: process.env.OAUTH_REFRESH_TOKEN,
   },
  });
-
- 
 
 
 const db = mysql.createConnection(process.env.DATABASE_URL)
@@ -53,6 +58,7 @@ app.post('/create', (req, res) => {
   )
 })
 
+
 app.get('/orders', (req, res) => {
   db.query('SELECT * FROM orders22', (err, result) => {
     if (err) {
@@ -62,6 +68,7 @@ app.get('/orders', (req, res) => {
     }
   })
 })
+
 
 app.get('/inventory', (req, res) => {
   db.query('SELECT * FROM inventory', (err, result) => {
@@ -73,6 +80,7 @@ app.get('/inventory', (req, res) => {
   })
 })
 
+
 app.get('/openorders', (req, res) => {
   db.query('SELECT * FROM orders22 WHERE completed = 0', 
   (err, result) => {
@@ -83,7 +91,6 @@ app.get('/openorders', (req, res) => {
     }
   })
 })
-
 
 
 app.put('/update', (req, res) => {
@@ -102,6 +109,7 @@ app.put('/update', (req, res) => {
   )
 })
 
+
 app.put('/updateInventory', (req, res) => {
   const Item = req.body.Item
   const QuantityLeft = req.body.QuantityLeft
@@ -116,6 +124,7 @@ app.put('/updateInventory', (req, res) => {
     },
   )
 })
+
 
 app.put('/updateq', (req, res) => {
   const id = req.body.id
@@ -159,6 +168,10 @@ app.delete('/delete/:id', (req, res) => {
     }
   })
 })
+
+
+
+
 
 
 transporter.verify((err, success) => {
