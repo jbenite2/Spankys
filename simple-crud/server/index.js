@@ -7,6 +7,11 @@ const { stepperClasses } = require('@mui/material')
 require('dotenv').config() //.env file in this folder holds private information
 const basicAuth = require('express-basic-auth');
 const cookieParser = require('cookie-parser');
+var Venmo = require('venmo');
+var client_id = process.env.VENMO_CLIENT_ID;
+var client_secret = process.env.VENMO_SECRET;
+var venmo = new Venmo(client_id, client_secret);
+const open = require('open')
 
 app.use(cookieParser('82e4e438a0705fabf61f9854e3b575af'));
 
@@ -19,6 +24,22 @@ app.use('/login', (req, res) => {
   });
 });
 
+var object = {
+  user:'jackmunhall'
+}
+
+app.post('/pay', (req, res) => {
+  venmo.pay(object, function(error, link) {
+    if (error) {
+      console.log(error);
+    } else {
+      open(link, function(err) {
+        if (err) throw err;
+      });
+      console.log(link)
+    }
+  })
+})
 
 const current = new Date();
 

@@ -28,6 +28,9 @@ function Customer(){
 	const current = new Date();
 	const date = `${current.getMonth()+1}/${current.getDate()}/${current.getFullYear()}`;
 
+	const pay = () => {
+		Axios.post('http://localhost:3001/pay')
+	}
 
 	 const addOrder = () => {
 		Axios.post('http://localhost:3001/create', {
@@ -136,6 +139,7 @@ function Customer(){
 			<input className="label2" type="text" onChange={(event) => { setPhone(event.target.value); }}/>
 
 			<Button onClick={addOrder} sx={{ color: 'white', backgroundColor: 'orange', borderColor: 'white', minWidth: '30%', padding: '20px', margin: '20px'}} variant='outlined' >Submit Order</Button>
+			<Button onClick={pay} sx={{ color: 'white', backgroundColor: 'orange', borderColor: 'white', minWidth: '30%', padding: '20px', margin: '20px'}} variant='outlined' >Pay Now (Venmo)</Button>
 		
 		
 		 
