@@ -133,6 +133,15 @@ function Customer(){
 			});
 		};
 
+		const onSubmitHandler = () => {
+			if(nickname.trim()==="" || phone.trim() =="" || item.trim() =="" || qty.trim() ==""){
+			  alert("Please fill in missing fields");
+			}
+			else{
+				addOrder();
+			}
+		  };
+
 
 	 return(
 	 <div className="button-top"> 
@@ -151,9 +160,9 @@ function Customer(){
 	 		<label className="label">Quantity:</label>
 	 		<input  className="label2" type="number" onChange={(event) => { setQty(event.target.value); }}/>
 			<label className="label">Email:</label>
-			<input className="label2" type="text" onChange={(event) => { setPhone(event.target.value); }}/>
+			<input className="label2" type="text" onChange={(event) => { setPhone(event.target.value); }} />
 
-			<Button onClick={addOrder} sx={{ color: 'white', backgroundColor: 'orange', borderColor: 'white', minWidth: '30%', padding: '20px', margin: '20px'}} variant='outlined' >Submit Order</Button>
+			<Button onClick={onSubmitHandler} sx={{ color: 'white', backgroundColor: 'orange', borderColor: 'white', minWidth: '30%', padding: '20px', margin: '20px'}} variant='outlined' >Submit Order</Button>
 			<Button onClick={pay} sx={{ color: 'white', backgroundColor: 'orange', borderColor: 'white', minWidth: '30%', padding: '20px', margin: '20px'}} variant='outlined' >Pay Now (Venmo)</Button>
 		
 		
