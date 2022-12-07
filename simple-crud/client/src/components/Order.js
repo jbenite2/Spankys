@@ -29,6 +29,8 @@ function Order(){
 
 	 const [orderList, setOrderList] = useState([]);
 	 const [completed, setCompleted] = useState(0);
+	 const [numOpen, setnumOpen] = useState(0);
+	 const [Cancel, setCancel] = useState("");
 
 
 	 const navigate = useNavigate();
@@ -72,6 +74,19 @@ function Order(){
 				 setOrderList(response.data);
 			});
 	   };
+
+	   const countOpenOrders = () => {
+		Axios.get("http://localhost:3001/countopenorders").then(function(response) {
+			const numOpen = response.data.length;
+			setnumOpen(numOpen);
+		
+		 }).catch(function(error) {
+			setnumOpen(0);
+			
+		 });
+		
+   };
+
 
 	   const markComplete = (id) => {
 		Axios.put("http://localhost:3001/complete", {completed: 1, id: id}).then(
@@ -158,15 +173,47 @@ function Order(){
 
 
 
-		const sendEmail = (val) => {
+		const sendCompEmail = ({val, numOpen}) => {
+			console.log(val);
+			console.log(numOpen);
 			Axios.post('http://localhost:3001/send', {
 				 nickname: val.nickname, 
 				 item: val.item, 
 				 qty: val.qty, 
 				 date: val.date, 
 				 phone: val.phone,	
+				 numOpen: numOpen,
 				 })
 			};
+
+		const sendCancEmail = ({val, Cancel}) => {
+			console.log(val);
+			console.log("Message");
+			console.log(Cancel);
+		
+			Axios.post('http://localhost:3001/sendcancel', {
+				nickname: val.nickname, 
+				item: val.item, 
+				qty: val.qty, 
+				date: val.date, 
+				phone: val.phone,
+				message: Cancel,
+
+				})
+		};
+
+
+		const onCancelHandler = ({val, Cancel}) => {
+			if(Cancel.trim()===""){
+			  alert("Please provide reason for order cancellation");
+			}
+			else{
+				sendCancEmail({val, Cancel});
+				deleteOrder(val.id);
+				
+			}
+		  };
+	
 
 
 
@@ -178,6 +225,13 @@ function Order(){
 	useEffect(() => {
 		getOpenOrders();
 	}, []);
+
+	useEffect(() => {
+		countOpenOrders();
+	}, []);
+
+
+	
 
 	 return(
 	 <div> 
@@ -233,6 +287,7 @@ function Order(){
                 <Button className="updateButtons"
                   onClick={() => {
                     updateOrderItem(val.id);
+					getOpenOrders();
                   }}
 				  sx={{ color: 'white', backgroundColor: 'orange', borderColor: 'orange' }}
                   >
@@ -253,6 +308,7 @@ function Order(){
 				<Button
 					onClick={() => {
 					updateOrderQty(val.id);
+					getOpenOrders();
 					}}  
 					sx={{ color: 'white', backgroundColor: 'orange', borderColor: 'orange' }}			
 					>
@@ -262,9 +318,17 @@ function Order(){
 				</div>	
 
 				<div className="col-final">	
+				<input
+				type="text"
+				placeholder="Reason for cancellation"
+				onChange={(event) => {
+				setCancel(event.target.value);
+				}}
+				/>
+
                 <Button
                   onClick={() => {
-                    deleteOrder(val.id);
+					onCancelHandler({val, Cancel});
                   }} 
 				  sx={{ color: 'white', backgroundColor: 'orange', borderColor: 'white' }} 
                  >
@@ -275,7 +339,7 @@ function Order(){
 				<div className="col-final">
 				<Button
                   onClick={ () => {
-                    sendEmail(val); markComplete(val.id); getOpenOrders()
+                    sendCompEmail({val, numOpen}); markComplete(val.id); getOpenOrders(); 
 				   }}
 				   sx={{ color: 'white', backgroundColor: 'orange', borderColor: 'white' }} 
                  >

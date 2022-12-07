@@ -33,6 +33,7 @@ function Customer(){
 	 const [newQty, setNewQty] = useState(0);
 
 	 const [orderList, setOrderList] = useState([]);
+	 const [numOpen, setnumOpen] = useState(0);
 
 
 	 const navigate = useNavigate();
@@ -46,6 +47,18 @@ function Customer(){
 	const pay = () => {
 		Axios.post('http://localhost:3001/pay')
 	}
+
+	const sendEmail = ({val, numOpen}) => {
+	
+		Axios.post('http://localhost:3001/sendconf', {
+			 nickname: val.nickname, 
+			 item: val.item, 
+			 qty: val.qty, 
+			 date: val.date, 
+			 phone: val.phone,	
+			 numOpen: numOpen,
+			 })
+		};
 
 	 const addOrder = () => {
 		Axios.post('http://localhost:3001/create', {
@@ -73,6 +86,18 @@ function Customer(){
 				  setOrderList(response.data);
 			 });
 		};
+
+		const countOpenOrders = () => {
+			Axios.get("http://localhost:3001/countopenorders").then(function(response) {
+				const numOpen = response.data.length;
+				setnumOpen(numOpen);
+			
+			 }).catch(function(error) {
+				setnumOpen(0);
+				
+			 });
+			
+	   };
 
 
 
@@ -139,8 +164,16 @@ function Customer(){
 			}
 			else{
 				addOrder();
+				
 			}
 		  };
+
+	const clearInput = () => {
+		setNickname('');
+		setItem('');
+		setQty('');
+		setPhone('');
+	};
 
 
 	 return(
@@ -162,7 +195,7 @@ function Customer(){
 			<label className="label">Email:</label>
 			<input className="label2" type="text" onChange={(event) => { setPhone(event.target.value); }} />
 
-			<Button onClick={onSubmitHandler} sx={{ color: 'white', backgroundColor: 'orange', borderColor: 'white', minWidth: '30%', padding: '20px', margin: '20px'}} variant='outlined' >Submit Order</Button>
+			<Button onClick= { () => {onSubmitHandler(); clearInput()}} sx={{ color: 'white', backgroundColor: 'orange', borderColor: 'white', minWidth: '30%', padding: '20px', margin: '20px'}} variant='outlined' >Submit Order</Button>
 			<Button onClick={pay} sx={{ color: 'white', backgroundColor: 'orange', borderColor: 'white', minWidth: '30%', padding: '20px', margin: '20px'}} variant='outlined' >Pay Now (Venmo)</Button>
 		
 		
@@ -179,6 +212,7 @@ function Customer(){
                 <h3>Qty: {val.qty}</h3>
                 <h3>Order_Date: {val.date}</h3>
 				<h3>Email: {val.phone}</h3>
+				<Button onClick = { () => {countOpenOrders(); sendEmail({val, numOpen})}} sx={{ color: 'white', backgroundColor: 'orange', borderColor: 'white', minWidth: '30%', padding: '20px', margin: '20px'}} variant='outlined' >Get Email Confirmation</Button>
              
               </div>
               <div>

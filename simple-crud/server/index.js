@@ -119,6 +119,18 @@ app.get('/openorders', (req, res) => {
   })
 })
 
+app.get('/countopenorders', (req, res) => {
+  db.query('SELECT * FROM orders22 WHERE completed = 0', 
+  (err, result) => {
+    if (err) {
+      console.log(err)
+    } else {
+      console.log(result)
+      res.send(result)
+    }
+  })
+})
+
 
 app.put('/update', (req, res) => {
   const id = req.body.id
@@ -210,7 +222,7 @@ transporter.verify((err, success) => {
 
  app.post("/send", function (req, res) {
 
-  const message = 'Hello '+(req.body.nickname)+',\n Your order is ready for pickup!\n\n Order details:\n\n Order item: '+(req.body.item)+'\n Quantity: '+(req.body.qty)+'\n Email: '+(req.body.phone)+'\n Thank you for your business!'
+  const message = 'Hello '+(req.body.nickname)+',\n Your order is ready for pickup!\n\n Order details:\n\n Order item: '+(req.body.item)+'\n Quantity: '+(req.body.qty)+'\n Email: '+(req.body.phone)+'\n There are '+(req.body.numOpen)+' orders ahead of you.\n Thank you for your business!'
 
 
   let mailOptions = {
@@ -228,6 +240,49 @@ transporter.verify((err, success) => {
     }
   });
  });
+
+ app.post("/sendconf", function (req, res) {
+
+  const message = 'Hello '+(req.body.nickname)+',\n Here is your order confirmation:\n\n Order details:\n\n Order item: '+(req.body.item)+'\n Quantity: '+(req.body.qty)+'\n Email: '+(req.body.phone)+'\n There are '+(req.body.numOpen)+' orders ahead of you.'
+
+
+  let mailOptions = {
+    from: process.env.EMAIL,
+    to: req.body.phone,
+    subject: "Order confirmation",
+    text: message,
+  };
+ 
+  transporter.sendMail(mailOptions, function (err, data) {
+    if (err) {
+      console.log("Error " + err);
+    } else {
+      console.log("Email sent successfully");
+    }
+  });
+ });
+
+ app.post("/sendcancel", function (req, res) {
+
+  const message = 'Hello '+(req.body.nickname)+',\n Your order has been canceled.\n\n Reason:\n\n'+(req.body.message)
+
+
+  let mailOptions = {
+    from: process.env.EMAIL,
+    to: req.body.phone,
+    subject: "Order cancelled",
+    text: message,
+  };
+ 
+  transporter.sendMail(mailOptions, function (err, data) {
+    if (err) {
+      console.log("Error " + err);
+    } else {
+      console.log("Email sent successfully");
+    }
+  });
+ });
+
 
   
 
