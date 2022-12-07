@@ -19,9 +19,15 @@ app.use(cors())
 app.use(express.json())
 
 app.use('/login', (req, res) => {
+  if (req.body.username == 'spankys' && req.body.password == 'spankys22'){
   res.send({
     token: 'spankys'
   });
+}
+else {
+  console.log("Error - incorrect credentials")
+  res.send('');
+}
 });
 
 var object = {

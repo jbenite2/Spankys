@@ -8,21 +8,28 @@ import {BrowswerRouter, Switch, Routes, Route, useNavigate} from 'react-router-d
 import Axios from 'axios';
 import ReactDOM from "react-dom";
 import graphic from '../assets/graphic.png';
+import useToken from './useToken';
 
-
+function setToken(userToken) {
+	sessionStorage.setItem('token', JSON.stringify(userToken));
+}
+function getToken() {
+	const tokenString = sessionStorage.getItem('token');
+  	const userToken = JSON.parse(tokenString);
+  	return userToken?.token
+}
 
   
 
 
 function Employee(){
 
-	const navigate = useNavigate();
-	const [token, setToken] = useState();
+	const navigate = useNavigate(); 
+	const { token, setToken } = useToken();
+
 	if(!token) {
 		return <Login setToken={setToken} />
 	}
-
-
 	
 
 	const navigateToOrders = () => {

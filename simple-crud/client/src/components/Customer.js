@@ -4,8 +4,23 @@ import Axios from 'axios';
 import Button from '@mui/material/Button' 
 import {Routes, Route, useNavigate} from 'react-router-dom';
 import menu from '../assets/menu.png';
+import Dropdown from "./Dropdown";
   
 function Customer(){
+
+	const options = [
+		{ value: "Pep stix", label: "Pep stix"},
+		{ value: "Barbecue stix", label: "Barbecue stix"},
+		{ value: "Chick/bacon/ranch stix", label:"Chick/bacon/ranch stix" },
+		{ value: "Nuggets", label: "Nuggets"},
+		{ value: "Mozz sticks", label: "Mozz sticks"},
+		{ value: "Chips + soda", label: "Chips + soda"},
+		{ value: "Chips", label: "Chips"},
+		{ value: "Soda", label: "Soda"},
+		{ value: "Pizza rolls", label: "Pizza rolls"},
+		{ value: "Cookies", label: "Cookies"}
+		
+	]
 
 	 const [nickname, setNickname] = useState("");
 	 const [item, setItem] = useState("");
