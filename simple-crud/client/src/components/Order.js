@@ -44,7 +44,7 @@ function Order() {
   }
 
   const addOrder = () => {
-    Axios.post('https://api.spankys.live:443/create', {
+    Axios.post('https://api.ospankys.live:443/create', {
       nickname: nickname,
       item: item,
       qty: qty,
@@ -65,13 +65,13 @@ function Order() {
   }
 
   const getOpenOrders = () => {
-    Axios.get('https://api.spankys.live:443/openorders').then((response) => {
+    Axios.get('https://api.ospankys.live:443/openorders').then((response) => {
       setOrderList(response.data)
     })
   }
 
   const countOpenOrders = () => {
-    Axios.get('https://api.spankys.live:443/countopenorders')
+    Axios.get('https://api.ospankys.live:443/countopenorders')
       .then(function (response) {
         const numOpen = response.data.length
         setnumOpen(numOpen)
@@ -82,7 +82,7 @@ function Order() {
   }
 
   const markComplete = (id) => {
-    Axios.put('https://api.spankys.live:443/complete', {
+    Axios.put('https://api.ospankys.live:443/complete', {
       completed: 1,
       id: id,
     }).then((response) => {
@@ -105,7 +105,7 @@ function Order() {
   }
 
   const updateOrderItem = (id) => {
-    Axios.put('https://api.spankys.live:443/update', {
+    Axios.put('https://api.ospankys.live:443/update', {
       item: newItem,
       id: id,
     }).then((response) => {
@@ -127,7 +127,7 @@ function Order() {
   }
 
   const updateOrderQty = (id) => {
-    Axios.put('https://api.spankys.live:443/updateq', {
+    Axios.put('https://api.ospankys.live:443/updateq', {
       qty: newQty,
       id: id,
     }).then((response) => {
@@ -149,7 +149,7 @@ function Order() {
   }
 
   const deleteOrder = (id) => {
-    Axios.delete(`https://api.spankys.live:443/delete/${id}`).then(
+    Axios.delete(`https://api.ospankys.live:443/delete/${id}`).then(
       (response) => {
         setOrderList(
           orderList.filter((val) => {
@@ -163,7 +163,7 @@ function Order() {
   const sendCompEmail = ({ val, numOpen }) => {
     console.log(val)
     console.log(numOpen)
-    Axios.post('https://api.spankys.live:443/send', {
+    Axios.post('https://api.ospankys.live:443/send', {
       nickname: val.nickname,
       item: val.item,
       qty: val.qty,
@@ -178,7 +178,7 @@ function Order() {
     console.log('Message')
     console.log(Cancel)
 
-    Axios.post('https://api.spankys.live:443/sendcancel', {
+    Axios.post('https://api.ospankys.live:443/sendcancel', {
       nickname: val.nickname,
       item: val.item,
       qty: val.qty,
