@@ -46,11 +46,11 @@ function Customer() {
   }/${current.getDate()}/${current.getFullYear()}`
 
   const pay = () => {
-    Axios.post('http://api.spankys.live:443/pay')
+    Axios.post('https://api.spankys.live:443/pay')
   }
 
   const sendEmail = ({ val, numOpen }) => {
-    Axios.post('http://api.spankys.live:443/sendconf', {
+    Axios.post('https://api.spankys.live:443/sendconf', {
       nickname: val.nickname,
       item: val.item,
       qty: val.qty,
@@ -61,7 +61,7 @@ function Customer() {
   }
 
   const addOrder = () => {
-    Axios.post('http://api.spankys.live:443/create', {
+    Axios.post('https://api.spankys.live:443/create', {
       nickname: nickname,
       item: item,
       qty: qty,
@@ -82,13 +82,13 @@ function Customer() {
   }
 
   const getOrders = () => {
-    Axios.get('http://api.spankys.live:443/orders').then((response) => {
+    Axios.get('https://api.spankys.live:443/orders').then((response) => {
       setOrderList(response.data)
     })
   }
 
   const countOpenOrders = () => {
-    Axios.get('http://api.spankys.live:443/countopenorders')
+    Axios.get('https://api.spankys.live:443/countopenorders')
       .then(function (response) {
         const numOpen = response.data.length
         setnumOpen(numOpen)
@@ -99,7 +99,7 @@ function Customer() {
   }
 
   const updateOrderItem = (id) => {
-    Axios.put('http://api.spankys.live:443/update', {
+    Axios.put('https://api.spankys.live:443/update', {
       item: newItem,
       id: id,
     }).then((response) => {
@@ -121,7 +121,7 @@ function Customer() {
   }
 
   const updateOrderQty = (id) => {
-    Axios.put('http://api.spankys.live:443/updateq', {
+    Axios.put('https://api.spankys.live:443/updateq', {
       qty: newQty,
       id: id,
     }).then((response) => {
@@ -143,7 +143,7 @@ function Customer() {
   }
 
   const deleteOrder = (id) => {
-    Axios.delete(`http://api.spankys.live:443/delete/${id}`).then(
+    Axios.delete(`https://api.spankys.live:443/delete/${id}`).then(
       (response) => {
         setOrderList(
           orderList.filter((val) => {
