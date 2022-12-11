@@ -32,7 +32,7 @@ function Inventory() {
   })
 
   const getInventory = () => {
-    Axios.get('http://api.spankys.live:3001/inventory').then((response) => {
+    Axios.get('http://api.spankys.live:443/inventory').then((response) => {
       setInventorylist(response.data)
       console.log(inventoryList)
     })
@@ -57,7 +57,7 @@ function Inventory() {
 
   const handleUpdate = (food, i) => {
     console.log('update')
-    Axios.put('http://api.spankys.live:3001/updateInventory', {
+    Axios.put('http://api.spankys.live:443/updateInventory', {
       Item: food.Item,
       QuantityLeft: food.QuantityLeft,
     }).then((response) => {
