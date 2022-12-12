@@ -32,7 +32,7 @@ function Inventory() {
   })
 
   const getInventory = () => {
-    Axios.get('https://api.ospankys.live:443/inventory').then((response) => {
+    Axios.get('https://api.ospankys.live:50/inventory').then((response) => {
       setInventorylist(response.data)
       console.log(inventoryList)
     })
@@ -57,7 +57,7 @@ function Inventory() {
 
   const handleUpdate = (food, i) => {
     console.log('update')
-    Axios.put('https://api.ospankys.live:443/updateInventory', {
+    Axios.put('https://api.ospankys.live:50/updateInventory', {
       Item: food.Item,
       QuantityLeft: food.QuantityLeft,
     }).then((response) => {

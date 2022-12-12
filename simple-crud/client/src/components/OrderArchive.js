@@ -30,7 +30,7 @@ function OrderArchive() {
   }
 
   const addOrder = () => {
-    Axios.post('https://api.ospankys.live:443/create', {
+    Axios.post('https://api.ospankys.live:50/create', {
       nickname: nickname,
       item: item,
       qty: qty,
@@ -47,19 +47,19 @@ function OrderArchive() {
   }
 
   const getOpenOrders = () => {
-    Axios.get('https://api.ospankys.live:443/openorders').then((response) => {
+    Axios.get('https://api.ospankys.live:50/openorders').then((response) => {
       setOrderList(response.data)
     })
   }
 
   const getOrders = () => {
-    Axios.get('https://api.ospankys.live:443/orders').then((response) => {
+    Axios.get('https://api.ospankys.live:50/orders').then((response) => {
       setOrderList(response.data)
     })
   }
 
   const markComplete = (id) => {
-    Axios.put('https://api.ospankys.live:443/complete', {
+    Axios.put('https://api.ospankys.live:50/complete', {
       completed: 1,
       id: id,
     }).then((response) => {
@@ -80,7 +80,7 @@ function OrderArchive() {
   }
 
   const updateOrderItem = (id) => {
-    Axios.put('https://api.ospankys.live:443/update', {
+    Axios.put('https://api.ospankys.live:50/update', {
       item: newItem,
       id: id,
     }).then((response) => {
@@ -100,7 +100,7 @@ function OrderArchive() {
   }
 
   const updateOrderQty = (id) => {
-    Axios.put('https://api.ospankys.live:443/updateq', {
+    Axios.put('https://api.ospankys.live:50/updateq', {
       qty: newQty,
       id: id,
     }).then((response) => {
@@ -120,7 +120,7 @@ function OrderArchive() {
   }
 
   const deleteOrder = (id) => {
-    Axios.delete(`https://api.ospankys.live:443/delete/${id}`).then(
+    Axios.delete(`https://api.ospankys.live:50/delete/${id}`).then(
       (response) => {
         setOrderList(
           orderList.filter((val) => {
