@@ -17,7 +17,7 @@ app.use(cookieParser('82e4e438a0705fabf61f9854e3b575af'))
 
 app.use(
   cors({
-    origin: ['https://www.ospankys.live'],
+    origin: ['*'],
   }),
 )
 
