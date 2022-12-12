@@ -46,11 +46,11 @@ function Customer() {
   }/${current.getDate()}/${current.getFullYear()}`
 
   const pay = () => {
-    Axios.post('https://api.ospankys.live/pay')
+    Axios.post('http://api.ospankys.live/pay')
   }
 
   const sendEmail = ({ val, numOpen }) => {
-    Axios.post('https://api.ospankys.live/sendconf', {
+    Axios.post('http://api.ospankys.live/sendconf', {
       nickname: val.nickname,
       item: val.item,
       qty: val.qty,
@@ -61,7 +61,7 @@ function Customer() {
   }
 
   const addOrder = () => {
-    Axios.post('https://api.ospankys.live/create', {
+    Axios.post('http://api.ospankys.live/create', {
       nickname: nickname,
       item: item,
       qty: qty,
@@ -82,13 +82,13 @@ function Customer() {
   }
 
   const getOrders = () => {
-    Axios.get('https://api.ospankys.live/orders').then((response) => {
+    Axios.get('http://api.ospankys.live/orders').then((response) => {
       setOrderList(response.data)
     })
   }
 
   const countOpenOrders = () => {
-    Axios.get('https://api.ospankys.live/countopenorders')
+    Axios.get('http://api.ospankys.live/countopenorders')
       .then(function (response) {
         const numOpen = response.data.length
         setnumOpen(numOpen)
@@ -99,7 +99,7 @@ function Customer() {
   }
 
   const updateOrderItem = (id) => {
-    Axios.put('https://api.ospankys.live/update', {
+    Axios.put('http://api.ospankys.live/update', {
       item: newItem,
       id: id,
     }).then((response) => {
@@ -121,7 +121,7 @@ function Customer() {
   }
 
   const updateOrderQty = (id) => {
-    Axios.put('https://api.ospankys.live/updateq', {
+    Axios.put('http://api.ospankys.live/updateq', {
       qty: newQty,
       id: id,
     }).then((response) => {
@@ -143,7 +143,7 @@ function Customer() {
   }
 
   const deleteOrder = (id) => {
-    Axios.delete(`https://api.ospankys.live/delete/${id}`).then((response) => {
+    Axios.delete(`http://api.ospankys.live/delete/${id}`).then((response) => {
       setOrderList(
         orderList.filter((val) => {
           return val.id !== id
