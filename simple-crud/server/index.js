@@ -15,7 +15,12 @@ const open = require('open')
 
 app.use(cookieParser('82e4e438a0705fabf61f9854e3b575af'))
 
-app.use(cors())
+app.use(
+  cors({
+    origin: ['https://www.ospankys.live'],
+  }),
+)
+
 app.use(express.json())
 
 app.use('/login', (req, res) => {
