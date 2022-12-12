@@ -5,7 +5,7 @@ import { Routes, Route, useNavigate } from 'react-router-dom'
 import Button from '@mui/material/Button'
 
 async function loginUser(credentials) {
-  return fetch('https://api.ospankys.live:50/login', {
+  return fetch('https://api.ospankys.live/login', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
