@@ -45,8 +45,8 @@ function Customer() {
     current.getMonth() + 1
   }/${current.getDate()}/${current.getFullYear()}`
 
-  const pay = () => {
-    Axios.post('https://api.ospankys.live/pay')
+  const openInNewTab = url => {
+    window.open(url, '_blank', 'noopener,noreferrer')
   }
 
   const sendEmail = ({ val, numOpen }) => {
@@ -239,7 +239,7 @@ function Customer() {
               Submit Order
             </Button>
             <Button
-              onClick={pay}
+              onClick={() => openInNewTab('https://venmo.com/mattschoess?txn=pay')}
               sx={{
                 color: 'white',
                 backgroundColor: 'orange',
