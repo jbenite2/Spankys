@@ -15,6 +15,7 @@ const open = require('open')
 
 app.use(cookieParser('82e4e438a0705fabf61f9854e3b575af'))
 
+// cors
 app.use(
   cors({
     origin: ['https://www.ospankys.live'],
@@ -23,6 +24,7 @@ app.use(
 
 app.use(express.json())
 
+// logs in to website if these credentials are entered
 app.use('/login', (req, res) => {
   if (req.body.username == 'spankys' && req.body.password == 'spankys22') {
     res.send({
@@ -38,6 +40,7 @@ var object = {
   user: 'mattschoess',
 }
 
+// venmo pay route
 app.post('/pay', (req, res) => {
   venmo.pay(object, function (error, link) {
     if (error) {
@@ -53,6 +56,7 @@ app.post('/pay', (req, res) => {
 
 const current = new Date()
 
+// email authorization
 let transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
@@ -68,6 +72,7 @@ let transporter = nodemailer.createTransport({
 const db = mysql.createConnection(process.env.DATABASE_URL)
 console.log('Connected to PlanetScale!')
 
+// inserts order into database
 app.post('/create', (req, res) => {
   const nickname = req.body.nickname
   const item = req.body.item
@@ -88,6 +93,7 @@ app.post('/create', (req, res) => {
   )
 })
 
+// shows orders and sends them back to client
 app.get('/orders', (req, res) => {
   db.query('SELECT * FROM orders22', (err, result) => {
     if (err) {
@@ -98,6 +104,7 @@ app.get('/orders', (req, res) => {
   })
 })
 
+// shows inventory and sends back to client
 app.get('/inventory', (req, res) => {
   db.query('SELECT * FROM inventory', (err, result) => {
     if (err) {
@@ -108,6 +115,7 @@ app.get('/inventory', (req, res) => {
   })
 })
 
+// sends incomplete orders to user
 app.get('/openorders', (req, res) => {
   db.query('SELECT * FROM orders22 WHERE completed = 0', (err, result) => {
     if (err) {
@@ -118,6 +126,7 @@ app.get('/openorders', (req, res) => {
   })
 })
 
+// counts open orders to determine number in line
 app.get('/countopenorders', (req, res) => {
   db.query('SELECT * FROM orders22 WHERE completed = 0', (err, result) => {
     if (err) {
@@ -129,6 +138,7 @@ app.get('/countopenorders', (req, res) => {
   })
 })
 
+// updates order in db if changed from client
 app.put('/update', (req, res) => {
   const id = req.body.id
   const item = req.body.item
@@ -145,6 +155,7 @@ app.put('/update', (req, res) => {
   )
 })
 
+// updates inventory if table is changed 
 app.put('/updateInventory', (req, res) => {
   const Item = req.body.Item
   const QuantityLeft = req.body.QuantityLeft
@@ -160,6 +171,7 @@ app.put('/updateInventory', (req, res) => {
   )
 })
 
+// update quantity of order given certain id
 app.put('/updateq', (req, res) => {
   const id = req.body.id
   const qty = parseInt(req.body.qty)
@@ -176,6 +188,7 @@ app.put('/updateq', (req, res) => {
   )
 })
 
+// mark order as completed
 app.put('/complete', (req, res) => {
   const id = req.body.id
   const completed = parseInt(req.body.completed)
@@ -192,6 +205,7 @@ app.put('/complete', (req, res) => {
   )
 })
 
+// delete order given certain id
 app.delete('/delete/:id', (req, res) => {
   const id = req.params.id
   db.query('DELETE FROM orders22 WHERE id = ?', id, (err, result) => {
@@ -209,6 +223,7 @@ transporter.verify((err, success) => {
     : console.log(`=== Server is ready to take messages: ${success} ===`)
 })
 
+// email route
 app.post('/send', function (req, res) {
   const message =
     'Hello ' +
@@ -239,6 +254,7 @@ app.post('/send', function (req, res) {
   })
 })
 
+// sends email confirmation
 app.post('/sendconf', function (req, res) {
   const message =
     'Hello ' +
@@ -269,6 +285,7 @@ app.post('/sendconf', function (req, res) {
   })
 })
 
+// cancels order and sends email about cancellation
 app.post('/sendcancel', function (req, res) {
   const message =
     'Hello ' +
