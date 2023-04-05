@@ -23,8 +23,16 @@
 	  align-items: center;
 	}
 	.order_col{
-		width: 600px;
 		align-items: center;
+	}
+	.image-container {
+		width: 80%; /* Set width to 50% */
+		margin: 10px auto; /* Center the image horizontally */
+	  }
+	
+	.image-container img {
+		max-width: 100%; /* Limit image width to 100% of container */
+		height: auto; /* Maintain aspect ratio */
 	}
   }
   
@@ -79,7 +87,7 @@ h2 {
 
 
 .order-confirm{
-	 width: 90%;
+	 width: 80%;
 	 height: auto;
   	 border: 1px solid white;
     display: flex;
@@ -128,38 +136,3 @@ h2 {
 h3 {
 	color:white;
 }
-
-/* Customer.css */
-
-@media (max-width: 767px) {
-	/* Styles for mobile devices */
-	.customer-image {
-	  display: block;
-	  margin: 0 auto;
-	  width: 70%;
-	  height: auto;
-	}
-	.customer-form {
-	  margin-bottom: 100px;
-	}
-  }
-  
-  .customer-form {
-	max-width: 600px;
-	margin: 0 auto;
-	padding: 20px;
-  }
-  
-  .button-top {
-	margin-top: 20px;
-	display: flex;
-	justify-content: center;
-  }
-  
-  .customer-image {
-	display: block;
-	margin: 0 auto;
-	max-width: 100%;
-	height: auto;
-  }
-  
