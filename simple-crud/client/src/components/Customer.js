@@ -287,7 +287,9 @@ function Customer() {
             })}
           </div>
           <div className="order_col">
-            <img src={menu} alt="spanky's menu" />
+            <div className="image-container">
+              <img src={menu} alt="spanky's menu" />
+            </div>
           </div>
         </div>
       </div>
