@@ -44,17 +44,15 @@
     flex-direction: row;
 
 }
-
 @media (max-width: 767px) {
-  /* Apply styles only for screens with maximum width of 767px (mobile devices) */
-  .choices2 {
-    padding: 0; /* Remove padding on mobile */
-  }
+	.choices2 {
+		padding: 0; / Remove padding on mobile */
+	}
 }
 
 .choices2 {
     width: 100%;
-    padding: 30%;
+    padding: 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
